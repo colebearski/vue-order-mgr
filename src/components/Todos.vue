@@ -4,7 +4,7 @@
         <div class="todos">
             <div v-for="todo in allTodos" v-bind:key="todo.id" class="todo">
                 {{ todo.title }}
-                <i class="fas fa-trash-alt"></i>
+                <i  @click="deleteTodo(todo.id)" class="fas fa-trash-alt"></i>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@ export default {
   computed: mapGetters(["allTodos"]),
   // for the Actions
   methods: {
-    ...mapActions(["getTodos"])
+    ...mapActions(["getTodos", "deleteTodo"])
   },
   // Lifecycle method
   created() {
