@@ -10,11 +10,20 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Todos",
-  computed: mapGetters(["allTodos"])
+  // for the Getters
+  computed: mapGetters(["allTodos"]),
+  // for the Actions
+  methods: {
+    ...mapActions(["getTodos"])
+  },
+  // Lifecycle method
+  created() {
+    this.getTodos();
+  }
 };
 </script>
 

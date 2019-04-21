@@ -1,25 +1,30 @@
 import axios from "axios";
 
 const state = {
-  todos: [
-    {
-      id: 1,
-      title: "Pet Java"
-    },
-    {
-      id: 2,
-      title: "Play with Java"
-    }
-  ]
+  todos: []
 };
 
 const getters = {
   allTodos: state => state.todos
 };
 
-const actions = {};
+const actions = {
+  async getTodos({ commit }) {
+    const response = await axios.get(
+      "https://jsonplaceholder.typicode.com/todos"
+    );
 
-const mutations = {};
+    commit("setTodos", response.data);
+  }
+};
+
+// Mutations add to the state
+const mutations = {
+  // setTodos function
+  // takes in state and todos
+  // takes state.todos and sets it equal to todos that are passed in
+  setTodos: (state, todos) => (state.todos = todos)
+};
 
 export default {
   state,
