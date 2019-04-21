@@ -4,6 +4,7 @@
         <div class="todos">
             <div v-for="todo in allTodos" v-bind:key="todo.id" class="todo">
                 {{ todo.title }}
+                <i class="fas fa-trash-alt"></i>
             </div>
         </div>
     </div>
@@ -41,6 +42,14 @@ export default {
   border-radius: 5px;
   text-align: center;
   position: relative;
+  cursor: pointer;
+}
+
+i {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #fff;
   cursor: pointer;
 }
 </style>
